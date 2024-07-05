@@ -42,8 +42,8 @@ jobs:
           sdk-version: '30'
           build-tools: '30.0.3'
 
-      - name: Accept Android SDK Licenses
-        run: yes | $ANDROID_SDK_ROOT/cmdline-tools/latest/bin/sdkmanager --licenses
+      # - name: Accept Android SDK Licenses
+      #   run: yes | $ANDROID_SDK_ROOT/cmdline-tools/latest/bin/sdkmanager --licenses
 
       - name: Install Node.js
         uses: actions/setup-node@v2
