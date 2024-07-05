@@ -1,6 +1,20 @@
+name: Android CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
 jobs:
   build:
     runs-on: macos-latest
+
+    env:
+      JAVA_HOME: /Applications/Android Studio.app/Contents/jre/Contents/Home
+      ANDROID_SDK_ROOT: ${{ github.workspace }}/android-sdk
 
     steps:
       - name: Checkout repository
@@ -25,14 +39,11 @@ jobs:
       - name: Install Android SDK
         uses: android-actions/setup-android@v2
         with:
-          api-level: 30
-          build-tools: 30.0.3
+          sdk-version: '30'
+          build-tools: '30.0.3'
 
       - name: Accept Android SDK Licenses
         run: yes | $ANDROID_SDK_ROOT/cmdline-tools/latest/bin/sdkmanager --licenses
-
-      - name: Install Android Platform Tools
-        run: $ANDROID_SDK_ROOT/cmdline-tools/latest/bin/sdkmanager platform-tools
 
       - name: Install Node.js
         uses: actions/setup-node@v2
