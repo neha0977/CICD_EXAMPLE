@@ -20,7 +20,7 @@ jobs:
         uses: actions/setup-java@v2
         with:
           distribution: 'adopt'
-          java-version: '16'  # Ensure this version is compatible with Android SDK tools
+          java-version: '16'  # Adjust to a version compatible with Android SDK tools
 
       - name: Cache Gradle dependencies
         uses: actions/cache@v2
@@ -35,9 +35,7 @@ jobs:
       - name: Install Android SDK
         uses: android-actions/setup-android@v2
         with:
-          # Specify a compatible Java version for Android SDK tools
-          java-version: '11'  # Adjust as necessary based on compatibility
-          sdk-platform-tools: true  # Install platform tools
+          sdk-platform-tools: true  # Ensure platform tools are installed
           accept-licenses: true
 
       - name: Install Node.js
